@@ -15,98 +15,98 @@ public class Livro
     private int edicao;
     private int quantidade;
     public Livro(int _id, string _titulo, string _autor, int _ano, string _genero, int _edicao, int _quantidade, string _isbn)
-{
-    id = _id;
-    isbn = _isbn;
-    titulo = _titulo;
-    autor = _autor;
-    ano = _ano;
-    genero = _genero;
-    edicao = _edicao;
-    quantidade = _quantidade;
-}
+    {
+        id = _id;
+        isbn = _isbn;
+        titulo = _titulo;
+        autor = _autor;
+        ano = _ano;
+        genero = _genero;
+        edicao = _edicao;
+        quantidade = _quantidade;
+    }
 
-public Livro()
-{
-    id = 0;
-    titulo = "";
-    autor = "";
-    ano = 0;
-    genero = "";
-    edicao = 0;
-    quantidade = 0;
-    isbn = "";
-}
+    public Livro()
+    {
+        id = 0;
+        titulo = "";
+        autor = "";
+        ano = 0;
+        genero = "";
+        edicao = 0;
+        quantidade = 0;
+        isbn = "";
+    }
 
-public string GetISBN()
-{
-    return isbn;
-}
+    public string GetISBN()
+    {
+        return isbn;
+    }
 
-public void SetISBN(string valor)
-{
-    isbn = valor;
-}
+    public void SetISBN(string valor)
+    {
+        isbn = valor;
+    }
 
-public string GetTitulo()
-{
-    return titulo;
-}
+    public string GetTitulo()
+    {
+        return titulo;
+    }
 
-public void SetTitulo(string valor)
-{
-    titulo = valor;
-}
+    public void SetTitulo(string valor)
+    {
+        titulo = valor;
+    }
 
-public string GetAutor()
-{
-    return autor;
-}
+    public string GetAutor()
+    {
+        return autor;
+    }
 
-public void SetAutor(string valor)
-{
-    autor = valor;
-}
+    public void SetAutor(string valor)
+    {
+        autor = valor;
+    }
 
-public int GetAno()
-{
-    return ano;
-}
+    public int GetAno()
+    {
+        return ano;
+    }
 
-public void SetAno(int valor)
-{
-    ano = valor;
-}
+    public void SetAno(int valor)
+    {
+        ano = valor;
+    }
 
-public string GetGenero()
-{
-    return genero;
-}
+    public string GetGenero()
+    {
+        return genero;
+    }
 
-public void SetGenero(string valor)
-{
-    genero = valor;
-}
+    public void SetGenero(string valor)
+    {
+        genero = valor;
+    }
 
-public int GetEdicao()
-{
-    return edicao;
-}
+    public int GetEdicao()
+    {
+        return edicao;
+    }
 
-public void SetEdicao(int valor)
-{
-    edicao = valor;
-}
+    public void SetEdicao(int valor)
+    {
+        edicao = valor;
+    }
 
-public int GetQuantidade()
-{
-    return quantidade;
-}
+    public int GetQuantidade()
+    {
+        return quantidade;
+    }
 
-public void SetQuantidade(int valor)
-{
-    quantidade = valor;
-}
+    public void SetQuantidade(int valor)
+    {
+        quantidade = valor;
+    }
     public int GetID()
     {
         return id;

@@ -3,83 +3,163 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace AppDesignPattern
 {
-    public sealed class Singleton
+    public class Secretaria: MenuTemplate
     {
 
-        private Singleton()
+
+
+        public void CreateAluno()
+        {
+            Conexao con = new Conexao();
+            Aluno c = new Aluno();
+            Console.WriteLine("+------------------------- ALUNO  --------------+    ");
+            Console.WriteLine("¦                                               ¦    ");
+            Console.WriteLine("        Forneca os dados do Aluno:              ¦    ");
+            Console.WriteLine("¦                                               ¦    ");
+            Console.WriteLine("+-----------------------------------------------+    ");
+
+
+            Console.WriteLine("Nome: ");
+            c.SetNome(Console.ReadLine().ToString());
+
+            Console.WriteLine("Rgm: ");
+            c.SetRgm(long.Parse(Console.ReadLine().ToString()));
+
+            Console.WriteLine("Data de nascimento: ");
+            c.SetDataNasc(Convert.ToDateTime(Console.ReadLine().ToString()));
+
+            Console.WriteLine("Bolsista: ");
+            c.SetBolsista(Convert.ToInt32(Console.ReadLine()));
+
+            Console.WriteLine("Rg: ");
+            c.SetRg(Console.ReadLine().ToString());
+
+            Console.WriteLine("Genero: ");
+            c.SetGenero(Console.ReadLine().ToString());
+
+            string sql = $"INSERT INTO ALUNO (Nome, Rgm, Datanasc, Bolsista, Rg, Genero ) VALUES ('{c.GetNome()}', '{c.GetRgm()}', '{c.GetDataNasc()}', {c.GetBolsista()}, '{c.GetRg}',' {c.GetGenero()}');";
+            con.executeScript(sql);
+        }
+        public void AtualizarAluno()
+        {
+            Conexao con = new Conexao();
+            Aluno u = new Aluno();
+            Console.WriteLine("+------------------------- ALUNO  --------------+    ");
+            Console.WriteLine("¦                                               ¦    ");
+            Console.WriteLine("    Forneca os dados atualizados do Aluno:      ¦    ");
+            Console.WriteLine("¦                                               ¦    ");
+            Console.WriteLine("+-----------------------------------------------+    ");
+
+
+            Console.WriteLine("Nome: ");
+            u.SetNome(Console.ReadLine().ToString());
+
+            Console.WriteLine("Rgm: ");
+            u.SetRgm(long.Parse(Console.ReadLine().ToString()));
+
+            Console.WriteLine("Data de nascimento: ");
+            u.SetDataNasc(Convert.ToDateTime(Console.ReadLine().ToString()));
+
+            Console.WriteLine("Bolsista: ");
+            u.SetBolsista(Convert.ToInt32(Console.ReadLine()));
+
+            Console.WriteLine("Rg: ");
+            u.SetRg(Console.ReadLine().ToString());
+
+            Console.WriteLine("Genero: ");
+            u.SetGenero(Console.ReadLine().ToString());
+
+            string sql = $"UPDATE ALUNO SET Nome = '{u.GetNome()}', rgm = '{u.GetRgm()}', Datanasc = {u.GetDataNasc()}, Bolsista = '{u.GetBolsista()}', genero = {u.GetGenero()} WHERE Rg = {u.GetRg()} ";
+
+            con.executeScript(sql);
+        }
+        public void ShowAluno()
         {
 
-        }
-        private static Singleton _instance;
-        public static Singleton GetInstance()
-        {
-            if (_instance == null)
+            Conexao con = new Conexao();
+            Console.WriteLine("+------------------------- ALUNO  --------------+    ");
+            Console.WriteLine("¦                                               ¦    ");
+            Console.WriteLine("                   Dados do Aluno:              ¦    ");
+            Console.WriteLine("¦                                               ¦    ");
+            Console.WriteLine("+-----------------------------------------------+    ");
+            string sql = $"SELECT * FROM ALUNO ";
+            using MySqlConnection conn = new MySqlConnection("Persist Security Info=False;server=sql.freedb.tech;database=freedb_umc_dp_aluno;uid=freedb_joseescobar;pwd=7V9qtnn5sRRz$nQ;Convert Zero Datetime=True");
+            conn.Open();
+
+            using MySqlCommand cmd = new MySqlCommand(sql, conn);
+            using MySqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                _instance = new Singleton();
+                Console.WriteLine("ID: " + reader["ID"]);
+                Console.WriteLine("Nome: " + reader["Nome"]);
+                Console.WriteLine("Rgm: " + reader["Rgm"]);
+                Console.WriteLine("Data de nascimento: " + reader["Datanasc"]);
+                Console.WriteLine("Bolsista: " + reader["Bolsista"]);
+                Console.WriteLine("Rg: " + reader["Rg"]);
+                Console.WriteLine("Gênero: " + reader["Genero"]);
+
+
+
+
             }
-            return _instance;
+            reader.Close();
         }
-        public string ShowMenu(String key)
+        public void DeleteAluno()
         {
-            string opcao = "";
-            switch (key)
-            {
-                case "MENU_PRINCIPAL":
+            Conexao con = new Conexao();
+            Console.WriteLine("+-------------------------  ALUNO --------------+    ");
+            Console.WriteLine("¦                                               ¦    ");
+            Console.WriteLine("      Forneca o ID do Aluno a ser deletado:     ¦    ");
+            Console.WriteLine("¦                                               ¦    ");
+            Console.WriteLine("+-----------------------------------------------+    ");
+            int d_id;
+
+            d_id = int.Parse(Console.ReadLine());
+            string deleteQuery2 = "DELETE FROM ALUNO WHERE ID =" + d_id;
+            using MySqlConnection conn = new MySqlConnection("Persist Security Info=False;server=sql.freedb.tech;database=freedb_umc_dp_aluno;uid=freedb_joseescobar;pwd=7V9qtnn5sRRz$nQ;Convert Zero Datetime=True");
+            conn.Open();
+            MySqlCommand deletecommand = new MySqlCommand(deleteQuery2, conn);
+            deletecommand.ExecuteNonQuery();
+            Console.WriteLine("Deletado com sucesso!");
+        }
+
+        protected override void ExecutarAcoes(string key)
+        {
+            
+            switch (key) {
+                case "1":
                     {
-
-
-                        Console.WriteLine("╔════════════════ MENU DE OPÇÕES ═══════════════╗    ");
-                        Console.WriteLine("║ 1 MENU SECRETARIA                             ║    ");
-                        Console.WriteLine("║                                               ║    ");
-                        Console.WriteLine("║ 2 MENU BIBLIOTECA                             ║    ");
-                        Console.WriteLine("║                                               ║    ");
-                        Console.WriteLine("║═══════════════════════════════════════════════║    ");
-                        Console.WriteLine("║                                               ║    ");
-                        Console.WriteLine("║ 0 SAIR                                        ║    ");
-                        Console.WriteLine("╚═══════════════════════════════════════════════╝    ");
-                        Console.WriteLine(" ");
-                        Console.Write("DIGITE UMA OPÇÃO : ");
-                        opcao = Console.ReadLine();
-
+                        CreateAluno(); 
                         break;
                     }
-                case "MENU_SECRETARIA":
+                case "2":
                     {
-                        Console.WriteLine("╔════════════════ MENU DE OPÇÕES ═══════════════╗    ");
-                        Console.WriteLine("║ 1 INCLUIR - LIVRO                             ║    ");
-                        Console.WriteLine("║ 2 ATUALIZAR - LIVRO                           ║    ");
-                        Console.WriteLine("║ 3 CONSULTAR - LIVRO                           ║    ");
-                        Console.WriteLine("║ 4 REMOVER - LIVRO                             ║    ");
-                        Console.WriteLine("║═══════════════════════════════════════════════║    ");
-                        Console.WriteLine("║═══════════════════════════════════════════════║    ");
-                        Console.WriteLine("║ 0 SAIR                                        ║    ");
-                        Console.WriteLine("╚═══════════════════════════════════════════════╝    ");
-                        Console.WriteLine(" ");
-                        Console.Write("DIGITE UMA OPÇÃO : ");
-                        opcao = Console.ReadLine();
-
+                        AtualizarAluno(); 
                         break;
                     }
-                case "MENU_BIBLIOTECA":
-                    Console.WriteLine("╔════════════════ MENU DE OPÇÕES ═══════════════╗    ");
-                    Console.WriteLine("║ 1 INCLUIR - ALUNO                             ║    "); 1
-                    Console.WriteLine("║ 2 ATUALIZAR - ALUNO                           ║    ");
-                    Console.WriteLine("║ 3 CONSULTAR - ALUNO                           ║    ");
-                    Console.WriteLine("║ 4 REMOVER - ALUNO                             ║    ");
-                    Console.WriteLine("║═══════════════════════════════════════════════║    ");
-                    Console.WriteLine("║ 0 SAIR                                        ║    ");
-                    Console.WriteLine("╚═══════════════════════════════════════════════╝    ");
-                    Console.WriteLine(" ");
-                    Console.Write("DIGITE UMA OPÇÃO : ");
-                    opcao = Console.ReadLine();
+                case "3":
+                    {
+                        ShowAluno(); 
+                        break;
+                    }
+                case "4":
+                    {
+                        DeleteAluno();
+                        break;
+                    }
 
-                    break;
-            }
+                default:  break;
+            } 
 
 
         }
-    } }
 
+       
+
+    }
+}

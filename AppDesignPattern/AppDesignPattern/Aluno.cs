@@ -67,13 +67,13 @@ namespace AppDesignPattern
         }
         public void SetBolsista(int valor)
         {
-          bolsista=valor;
+            bolsista = valor;
         }
-        public string GetRg() 
+        public string GetRg()
         {
-            return rg;        
+            return rg;
         }
-        public void SetRg (string valor)
+        public void SetRg(string valor)
         {
             rg = valor;
         }
@@ -81,7 +81,7 @@ namespace AppDesignPattern
         {
             return genero;
         }
-        public void SetGenero (string valor)
+        public void SetGenero(string valor)
         {
             genero = valor;
         }

@@ -11,7 +11,7 @@ namespace AppDesignPattern
 {
     public class Conexao
     {
-        
+
         public void executeScript(string sql)
         {
             MySqlConnection con;
@@ -33,10 +33,10 @@ namespace AppDesignPattern
                 Console.WriteLine("connection Open!");
                 using var cmd = new MySqlCommand(sql, con);
                 cmd.ExecuteNonQuery();
-                con.Close();    
+                con.Close();
             }
-           
+
         }
-      
+
     }
 }

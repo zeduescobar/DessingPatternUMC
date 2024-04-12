@@ -1,36 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\José Escobar\\source\\repos\\AppDesignPattern\\AppDesignPattern\\AppDesignPattern.csproj": {}
+    "C:\\Users\\alunos\\source\\repos\\AppDesignPattern\\AppDesignPattern\\AppDesignPattern.csproj": {}
   },
   "projects": {
-    "C:\\Users\\José Escobar\\source\\repos\\AppDesignPattern\\AppDesignPattern\\AppDesignPattern.csproj": {
+    "C:\\Users\\alunos\\source\\repos\\AppDesignPattern\\AppDesignPattern\\AppDesignPattern.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\José Escobar\\source\\repos\\AppDesignPattern\\AppDesignPattern\\AppDesignPattern.csproj",
+        "projectUniqueName": "C:\\Users\\alunos\\source\\repos\\AppDesignPattern\\AppDesignPattern\\AppDesignPattern.csproj",
         "projectName": "AppDesignPattern",
-        "projectPath": "C:\\Users\\José Escobar\\source\\repos\\AppDesignPattern\\AppDesignPattern\\AppDesignPattern.csproj",
-        "packagesPath": "C:\\Users\\José Escobar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\José Escobar\\source\\repos\\AppDesignPattern\\AppDesignPattern\\obj\\",
+        "projectPath": "C:\\Users\\alunos\\source\\repos\\AppDesignPattern\\AppDesignPattern\\AppDesignPattern.csproj",
+        "packagesPath": "C:\\Users\\alunos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alunos\\source\\repos\\AppDesignPattern\\AppDesignPattern\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\José Escobar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\alunos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -38,16 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "MySql.Data": {
               "target": "Package",
@@ -70,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
