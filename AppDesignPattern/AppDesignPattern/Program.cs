@@ -2,6 +2,7 @@
 using System.Data;
 using System.Globalization;
 using AppDesignPattern;
+using AppDesignPattern.Singleton;
 using Google.Protobuf;
 using MySql.Data.MySqlClient;
 

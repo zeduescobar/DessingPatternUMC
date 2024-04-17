@@ -1,122 +1,53 @@
-﻿using Org.BouncyCastle.Math.EC.Multiplier;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace AppDesignPattern
 {
-    public sealed class Singleton
-    {
+    public class Secretaria: MenuTemplate
 
-        private Singleton()
+    { 
+
+        protected override void ExecutarAcoes(string key)
         {
+            
+            switch (key) {
+                case "1":
+                    {
+                        ICommand create = new CreateCommand();
+                        create.Execute();
+                        break;
+                    }
+                case "2":
+                    {
+                        ICommand update = new UpdateCommand();
+                        update.Execute();
+                        break;
+                    }
+                case "3":
+                    {
+                        ICommand read = new ReadCommand();
+                        read.Execute();
+                        break;
+                    }
+                case "4":
+                    {
+                        ICommand delete = new DeleteCommand();
+                        delete.Execute();
+                        break;
+                    }
+
+                default:  break;
+            } 
+
 
         }
-        private static Singleton _instance;
-        public static Singleton GetInstance()
-        {
-            if (_instance == null)
-            {
-                _instance = new Singleton();
-            }
-            return _instance;
-        }
-        public string ShowMenu(String key, MenuTemplate obj)
-        {
-            string opcao = "";
 
-            switch (key)
-            {
-                case "MENU_PRINCIPAL":
-                    {
-                        Console.WriteLine("╔════════════════ MENU DE OPÇÕES ═══════════════╗    ");
-                        Console.WriteLine("║ 1 MENU SECRETARIA                             ║    ");
-                        Console.WriteLine("║ 2 MENU BIBLIOTECA                             ║    ");
-                        Console.WriteLine("║ 3 MENU EMPRESTIMO                             ║    ");
-                        Console.WriteLine("║ 4 MENU VENDA                                  ║    ");
-                        Console.WriteLine("║═══════════════════════════════════════════════║    ");
-                        Console.WriteLine("║                                               ║    ");
-                        Console.WriteLine("║ 0 SAIR                                        ║    ");
-                        Console.WriteLine("╚═══════════════════════════════════════════════╝    ");
+       
 
-                        break;
-                    }
-                case "MENU_SECRETARIA":
-                    {
-
-                        Console.WriteLine("╔════════════════ MENU DE OPÇÕES ═══════════════╗    ");
-                        Console.WriteLine("║ 1 INCLUIR - ALUNO                             ║    ");
-                        Console.WriteLine("║ 2 ATUALIZAR - ALUNO                           ║    ");
-                        Console.WriteLine("║ 3 CONSULTAR - ALUNO                           ║    ");
-                        Console.WriteLine("║ 4 REMOVER - ALUNO                             ║    ");
-                        Console.WriteLine("║═══════════════════════════════════════════════║    ");
-                        Console.WriteLine("║═══════════════════════════════════════════════║    ");
-                        Console.WriteLine("║ 0 SAIR                                        ║    ");
-                        Console.WriteLine("╚═══════════════════════════════════════════════╝    ");
-                        break;
-                    }
-                case "MENU_BIBLIOTECA":
-                    {
-                        Console.WriteLine("╔════════════════ MENU DE OPÇÕES ═══════════════╗    ");
-                        Console.WriteLine("║ 1 INCLUIR - LIVRO                             ║    ");
-                        Console.WriteLine("║ 2 ATUALIZAR - ALUNO                           ║    ");
-                        Console.WriteLine("║ 3 CONSULTAR - ALUNO                           ║    ");
-                        Console.WriteLine("║ 4 REMOVER - ALUNO                             ║    ");
-                        Console.WriteLine("║═══════════════════════════════════════════════║    ");
-                        Console.WriteLine("║ 0 SAIR                                        ║    ");
-                        Console.WriteLine("╚═══════════════════════════════════════════════╝    ");
-                        break;
-                    }
-                case "MENU_EMPRESTIMO":
-                    {
-                        Console.WriteLine("╔════════════════ MENU DE OPÇÕES ═══════════════╗    ");
-                        Console.WriteLine("║ 1 INCLUIR - EMPRESTIMO                        ║    ");
-                        Console.WriteLine("║ 2 ATUALIZAR - EMPRESTIMO                      ║    ");
-                        Console.WriteLine("║═══════════════════════════════════════════════║    ");
-                        Console.WriteLine("║ 0 SAIR                                        ║    ");
-                        Console.WriteLine("╚═══════════════════════════════════════════════╝    ");
-                        break;
-                    }
-                case "MENU_VENDA":
-                    {
-                        Console.WriteLine("╔════════════════ MENU DE OPÇÕES ═══════════════╗    ");
-                        Console.WriteLine("║ 1 INCLUIR - VENDA                             ║    ");
-                        Console.WriteLine("║ 2 ATUALIZAR - VENDA                           ║    ");
-                        Console.WriteLine("║═══════════════════════════════════════════════║    ");
-                        Console.WriteLine("║ 0 SAIR                                        ║    ");
-                        Console.WriteLine("╚═══════════════════════════════════════════════╝    ");
-                        break;
-                    }
-
-
-
-            }
-            opcao = Console.ReadLine();
-            if (obj != null)
-            {
-                obj.run(opcao);
-            }
-            return opcao;
-        }
     }
 }
-
-
-
-/*public string ShowMenu(String key, TemplateMenu templatemenu)
-{
-    Se key === Menu {
-        exibe o menu direto
-    }
-
-    Senao {
-        classe.showMenu
-    }
-
-    Console.WriteLine(" ");
-    Console.Write("DIGITE UMA OPÇÃO : ");
-    opcao = Console.ReadLine();
-}*/
