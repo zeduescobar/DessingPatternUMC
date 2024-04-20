@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace Calculadora.Command
 {
-
-
     public class SubtracaoCommand : ICommand
     {
         public void Execute()
@@ -24,4 +22,3 @@ namespace Calculadora.Command
         }
     }
 }
-

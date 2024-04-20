@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace Calculadora.Command
 {
-
-
     public class AdicaoCommand : ICommand
     {
         public void Execute()
@@ -24,5 +22,3 @@ namespace Calculadora.Command
         }
     }
 }
-
-

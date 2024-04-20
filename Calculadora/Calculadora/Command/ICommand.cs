@@ -1,7 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public interface ICommand
+namespace Calculadora.Command
 {
-    public void Execute();
+    using System;
 
+    public interface ICommand
+    {
+        public void Execute();
+
+    }
 }
